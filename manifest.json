@@ -1,0 +1,30 @@
+{
+    "manifest_version": 2,
+    "name": "YeeT - Youtube Playlist Copier",
+    "description": "This extension lets you clone (aka YeeT) a third-party YouTube playlist to a personal one.",
+    "version": "1.0",
+    "homepage_url": "https://github.com/JediRhymeTrix/youtube-playlist-copier",
+    "browser_action": {
+        "default_icon": "yeeticon.png",
+        "default_popup": "popup.html",
+        "default_title": "YeeT"
+    },
+    "background": {
+        "scripts": ["scripts/background.js"],
+        "persistent": false
+    },
+    "content_scripts": [{
+        "matches": ["https://www.youtube.com/playlist*"],
+        "all_frames": true,
+        "js": ["scripts/jquery.min.js", "scripts/content.js"]
+    }],
+    "web_accessible_resources": [
+        "assets/*"
+    ],
+    "permissions": [
+        "activeTab",
+        "storage",
+        "notifications"
+    ],
+    "content_security_policy": "script-src 'self' https://www.gstatic.com/; object-src 'self'"
+}
